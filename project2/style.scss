@@ -1,0 +1,323 @@
+$cream:#F9F6F1;
+$accent:#D7B399;
+$dark: #212121;
+
+@mixin breakpoint($point) {
+    @if $point ==lg{
+        @media(max-width: 992px){@content;}
+    }
+    @else if $point == md{
+        @media(max-width: 768px){@content;}
+    }
+    @else if $point == sm{
+        @media(max-width: 576px){@content;}
+    }
+    @else if $point == xs{
+        @media(max-width: 320px){@content;}
+    }
+    @else if $point == mx{
+        @media(max-width: 456px){@content}
+    }
+}
+
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.page{ 
+    padding-bottom: 100px;
+    padding-top: 100px;
+    &-light{
+        background-color: $cream;
+    }
+    &-dark{
+        background-color: $dark;
+    }
+}
+.wrapper{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 26px;
+}
+.nav{
+    display: flex;
+    list-style-type:none;
+    padding-left: 0;
+    &-item{
+        margin-right: 60px;
+        margin-left : 20px;
+    }
+    &-link{
+        text-decoration: none;
+        color: $dark;
+        &::after{
+            content: "";
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: $accent;
+            margin-top: 5px;
+            opacity: 0;
+        }
+        &:hover::after{
+            opacity: 1;
+        }
+    }    
+    &-info{
+        .nav-item{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    @include breakpoint(md){
+        display: none
+    }
+}
+.menu{
+    display: none;
+    @include breakpoint(md){
+        display: block;
+    }
+}
+.btn{
+    font-size: 16px;
+    font-weight: 400;
+    background-color: $accent;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    &-xs{
+        padding: 8px 28px;
+    }
+    &-center{
+        display: block;
+        text-align: center;
+        max-width: 200px;
+        margin: 0 auto;
+        span{
+            margin-right: 15px;
+        }
+    }
+}
+.title-h2{
+    text-align: center;
+    font-size: 38px;
+    @include breakpoint(sm){
+        font-size: 30px;
+    }
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    @include breakpoint(lg){
+        flex-wrap: wrap;
+    }
+    &-item{
+        flex: 0 0 50%;
+        @include breakpoint(lg){
+            flex: 0 0 100%;
+        }
+    }
+    &-sale{
+        &-description{
+            font-size: 30px;
+            font-weight: 400;
+        }
+        &-title{
+            font-size: 55px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            @include breakpoint(sm){
+                font-size: 1.699em;
+            }
+        }
+    }
+}
+.box{
+    @include breakpoint(lg){
+        margin: 0 auto;
+    }
+    position: relative;
+    &-price{
+        position: absolute;
+        right: 0;
+        text-align: right;
+        &-old{
+            font-size: 24px;
+            font-weight: 700;
+            @include breakpoint(sm){
+                font-size: 16px;
+            }
+        }
+        &-new{
+            font-size: 24px;
+            font-weight: 700;
+            color: red;
+        }
+    }
+    &-image{
+        width: 100%;
+        max-width: 556px;
+    }
+}
+.notice{
+    &-title{
+        color: #fff;
+        font-size: 30px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    span{
+        color: #fff;
+        font-weight: 700;
+    }
+    &-description{
+        text-align: center;
+        color: #fff;
+    }
+}
+.collection{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    @include breakpoint(lg){
+        flex-wrap: wrap;
+    }
+    &-item{
+        flex: 0 0 50%;
+        padding: 50px 0;
+        @include breakpoint(lg){
+            flex: 0 0 100%;
+        }
+    }
+    &-man{
+        background-image: url("../img/man.png");
+        background-repeat: no-repeat;
+        background-size: 190px 171px;
+        background-position: calc(100% - 50px)bottom;
+        @include breakpoint(sm){
+            background-size: 155px 143px;
+            background-position: calc(100% - -3px) bottom;
+        }
+        @include breakpoint(xs){
+            background-size: 136px 122px;
+            background-position: calc(100% - -16px) bottom;
+        }
+    }
+    &-woman{
+        background-image: url("../img/woman.png");
+        background-repeat: no-repeat;
+        background-size: 190px 171px;
+        background-position: calc(100% - 50px) bottom;
+        @include breakpoint(sm){
+            background-size: 155px 143px;
+            background-position: calc(100% - -3px) bottom;
+            font-size: 14px;
+        }
+        @include breakpoint(xs){
+            background-size: 136px 122px;
+            background-position: calc(100% - -16px) bottom;
+        }
+    }
+    &-title{
+        font-size: 24px;
+        text-transform: uppercase;
+        @include breakpoint(sm){
+            font-size: 19px;
+        }
+    }
+    &-description{
+        font-size: 16px;
+        margin-bottom: 30px;
+        @include breakpoint(sm){
+            font-size: 14px;
+        }
+        @include breakpoint(xs){
+            font-size: 14px;
+        }
+    }
+}
+.product{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @include breakpoint(lg){
+        flex-wrap: wrap;
+    }
+    &-item{
+        &:hover{
+            transform: scale(1.05);
+            transition: .1s linear;
+        }
+        @include breakpoint(lg){
+            flex: 0 0 49%;
+        }
+        @include breakpoint(mx){
+            margin: 0 auto;
+        }
+    }
+    &-title{
+        font-weight: 600;
+    }
+    &-price{
+        color: $accent;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding:30px 0;
+    @include breakpoint(lg){
+        flex-wrap: wrap;
+    }
+    &-logo{
+        flex: 0 0 40%;
+        @include breakpoint(lg){
+            flex: 0 0 100%;
+        }
+    }
+    &-nav{
+        display: flex;
+        flex: 0 0 60%;
+        justify-content: space-between;
+        color: white;
+        @include breakpoint(lg){
+            flex: 0 0 100%;
+        }
+        @include breakpoint(sm){
+            flex-wrap: wrap;
+        }
+    }
+    &-list{
+        list-style-type: none;
+        padding-left: 0;
+        @include breakpoint(sm){
+            flex: 0 0 49%;
+            margin-bottom: 20px;
+        }
+        &-title{
+            font-size: 10px;
+            font-weight: 700;
+        }
+        &-item{
+            margin-bottom: 10px;
+        }
+        &-link{
+            color: silver;
+            font-size: 14px;
+            text-decoration: none;
+        }
+    }
+}                               
